@@ -146,7 +146,7 @@ const RegisterForm: React.FC = () => {
                     <h2 className="text-3xl font-bold text-brown text-center">
                         Create an account
                     </h2>
-                    <p className="mt-2 text-center text-tan">
+                    <p className="mt-2 text-center text-brown">
                         Join Recipe Hub and start sharing your recipes
                     </p>
                 </div>
