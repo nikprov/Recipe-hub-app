@@ -1,0 +1,64 @@
+[
+    {
+      "model": "auth.user",
+      "pk": 1,
+      "fields": {
+        "username": "adminexample",
+        "password": "pbkdf2_sha256$600000$hX6XoFhgDW8j5TYkK2Xm$XK4HkWgzRWnjL5J4kN7gUfW9/EwEYc8riZUFJ+eYbWE=",
+        "email": "admin@example.com",
+        "is_staff": true,
+        "is_superuser": true,
+        "is_active": true,
+        "date_joined": "2024-01-22T10:00:00Z"
+      }
+    },
+    {
+      "model": "auth.user",
+      "pk": 2,
+      "fields": {
+        "username": "testuser1",
+        "password": "pbkdf2_sha256$600000$hX6XoFhgDW8j5TYkK2Xm$XK4HkWgzRWnjL5J4kN7gUfW9/EwEYc8riZUFJ+eYbWE=",
+        "email": "testuser1@example.com",
+        "is_staff": false,
+        "is_superuser": false,
+        "is_active": true,
+        "date_joined": "2024-01-22T10:00:00Z"
+      }
+    },
+    {
+      "model": "recipes.recipe",
+      "pk": 1,
+      "fields": {
+        "title": "Classic Spaghetti Carbonara",
+        "description": "A traditional Italian pasta dish with eggs, cheese, pancetta, and black pepper.",
+        "ingredients": "400g spaghetti\n200g pancetta or guanciale\n4 large eggs\n100g Pecorino Romano\n100g Parmigiano-Reggiano\nBlack pepper\nSalt",
+        "instructions": "1. Bring a large pot of salted water to boil\n2. Cook spaghetti according to package instructions\n3. While pasta cooks, whisk eggs and cheese\n4. Cook pancetta until crispy\n5. Combine hot pasta with egg mixture\n6. Add pancetta and plenty of black pepper",
+        "cooking_time": 30,
+        "author": 1,
+        "created_at": "2024-01-22T10:00:00Z",
+        "updated_at": "2024-01-22T10:00:00Z"
+      }
+    },
+    {
+      "model": "recipes.comment",
+      "pk": 1,
+      "fields": {
+        "recipe": 1,
+        "author": 2,
+        "content": "Tried this recipe last night - it was perfect! The key really is using good quality cheese.",
+        "created_at": "2024-01-22T11:00:00Z",
+        "updated_at": "2024-01-22T11:00:00Z"
+      }
+    },
+    {
+      "model": "recipes.difficultyrating",
+      "pk": 1,
+      "fields": {
+        "recipe": 1,
+        "rating_author": 2,
+        "rating": 3,
+        "created_at": "2024-01-22T11:00:00Z",
+        "updated_at": "2024-01-22T11:00:00Z"
+      }
+    }
+  ]
