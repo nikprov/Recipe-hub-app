@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
               <span className="text-2xl font-bold text-brown">Recipe Hub</span>
             </div>
             <p className="text-amber-700">
-              Share your favorite recipes and discover new ones from our community of food lovers.
+              Share your favorite recipes and discover new ones from our community of food lovers. Write about your experiences to help others prepare the best dish for the day!
             </p>
           </div>
 
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold text-brown mb-4">Connect</h3>
             <div className="flex space-x-4">
               <a
-                href="https://github.com/yourusername/recipe-hub"
+                href="https://github.com/nikprov/Recipe-hub-app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-amber-600 hover:text-brown transition-colors"
@@ -68,6 +68,8 @@ const Footer: React.FC = () => {
             Made with <Heart className="h-4 w-4 mx-1 text-brown" /> by Nick Providakis
             <span className="mx-2">|</span>
             © {currentYear} Recipe Hub
+            <span className="mx-2">|</span>
+            React.ts + tailwind.css + Django 
           </p>
         </div>
       </div>

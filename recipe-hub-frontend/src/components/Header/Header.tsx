@@ -26,7 +26,7 @@ const Header: React.FC = () => {
                     {/* Logo */}
                     <ChefHat className="h-8 w-8 text-brown absolute inset-y-8 left-5" />
                     <Link to="/" className="flex items-stretch">
-                        <h1 className="text-2xl font-bold text-brown absolute inset-y-8 left-14">RecipeHub</h1>
+                        <h1 className="text-2xl font-bold text-brown absolute inset-y-8 left-14">Recipe Hub</h1>
                     </Link>
 
                     {/* Desktop Navigation */}

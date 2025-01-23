@@ -1,6 +1,6 @@
 # Recipe Hub Backend
 
-Welcome to the Recipe Hub backend documentation. This Django REST Framework application provides a robust API for managing recipes, user interactions, and authentication. The backend is designed with security, scalability, and performance in mind.
+Welcome to the Recipe hub app backend documentation. This Django REST Framework application provides a robust API for managing recipes, user interactions, and authentication. The backend is designed with security, scalability, and performance in mind.
 
 ## System Architecture
 
@@ -66,14 +66,15 @@ graph TB
 
 1. Clone the repository:
    ```bash
-   git clone [your-repository-url]
-   cd recipe-hub/backend
+   git clone https://github.com/nikprov/Recipe-hub-app/tree/main
+   cd recipe-hub-app/backend
    ```
 
 2. Create and activate a virtual environment:
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate
+     # On Windows: venv\Scripts\activate
    ```
 
 3. Install dependencies:
@@ -105,8 +106,10 @@ graph TB
    CREATE DATABASE recipe_hub_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
    ```
 
-6. Apply migrations:
+6. Make and then apply migrations:
    ```bash
+   python manage.py makemigrations
+      # and then:
    python manage.py migrate
    ```
 
@@ -132,7 +135,7 @@ python manage.py shell < generate_sample_data.py
 ```
 
 The generation script will create:
-- Admin user (username: admin, password: AdminPass123!)
+- Admin user (username: adminexample, password: AdminPass123!)
 - Test user (username: testuser1, password: TestPass123!)
 - 12 recipes (6 from each user)
 - 3 comments per recipe
@@ -164,6 +167,34 @@ The generation script will create:
 - POST `/api/recipes/{recipe_id}/difficulty-ratings/`: Add rating
 - PUT `/api/recipes/{recipe_id}/difficulty-ratings/{id}/`: Update rating
 - DELETE `/api/recipes/{recipe_id}/difficulty-ratings/{id}/`: Delete rating
+
+## API endpoint Permissions
+
+### Authentication
+- POST `/api/auth/registration/`: Unauthenticated users `OR` superusers
+- POST `/api/auth/token/`: all users
+- POST `/api/auth/token/refresh/`: all users
+- GET `/api/auth/user/`: all users
+
+### Recipes
+- GET `/api/recipes/`: all users
+- POST `/api/recipes/`: authenticated users
+- GET `/api/recipes/{id}/`: authenticated users
+- PUT `/api/recipes/{id}/`: authenticated users `&` authors of {id} recipe
+- DELETE `/api/recipes/{id}/`: authenticated users `&` authors of {id} recipe `OR` superusers
+
+### Comments
+- GET `/api/recipes/{recipe_id}/comments/`: authenticated users
+- POST `/api/recipes/{recipe_id}/comments/`: authenticated users
+- PUT `/api/recipes/{recipe_id}/comments/{id}/`: authenticated users `&` authors of {id} recipe
+- DELETE `/api/recipes/{recipe_id}/comments/{id}/`: authenticated users `&` authors of {id} recipe `OR` superusers
+
+### Difficulty Ratings
+- GET `/api/recipes/{recipe_id}/difficulty-ratings/`: authenticated users - GET method for this endpoint is used indirectly in the frontend to calculate the average value of all ratings for the respective recipe. Therefore, an unauthenticated user can only see the average difficulty rating value both in recipe list and recipe detail page.
+- POST `/api/recipes/{recipe_id}/difficulty-ratings/`: authenticated users - Only one POST per user per recipe.
+- PUT `/api/recipes/{recipe_id}/difficulty-ratings/{id}/`: authenticated users `&` authors of {id} difficulty-ratings This action has a frontend throttle limit of 5 times/recipe {id}. Displays a warning message.
+- DELETE `/api/recipes/{recipe_id}/difficulty-ratings/{id}/`: authenticated users `&` authors of difficulty-ratings/{id}  `OR` superusers - Not accesible from the frontend yet.
+
 
 ## Rate Limiting
 
@@ -221,44 +252,16 @@ The test suite covers:
    - Cached authentication checks
    - Optimized serializers
 
-## Development Guidelines
+## Various issues 
 
-1. Code Style:
-   - Follow PEP 8
-   - Use meaningful variable names
-   - Add docstrings to functions/classes
-
-2. Testing:
-   - Write tests for new features
-   - Maintain test coverage
-   - Test edge cases
-
-3. API Design:
-   - Follow REST principles
-   - Use appropriate HTTP methods
-   - Provide meaningful error messages
-
-## Troubleshooting
-
-Common issues and solutions:
-
-1. Database Connection:
-   ```bash
-   # Check MySQL service
-   sudo service mysql status
-   
-   # Verify credentials
-   mysql -u your_user -p
-   ```
-
-2. Migration Issues:
+1. Migration Issues:
    ```bash
    # Reset migrations
    python manage.py migrate --fake recipes zero
    python manage.py migrate recipes
    ```
 
-3. Permission Issues:
+2. Permission Issues:
    ```bash
    # Grant necessary MySQL permissions
    GRANT ALL PRIVILEGES ON recipe_hub_db.* TO 'your_user'@'localhost';
@@ -274,4 +277,4 @@ Common issues and solutions:
 
 ## License
 
-[Your chosen license]
+See LICENSE at root dir

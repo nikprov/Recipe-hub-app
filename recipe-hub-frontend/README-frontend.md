@@ -1,10 +1,10 @@
 # Recipe Hub Frontend
 
-Welcome to the Recipe Hub frontend documentation. This React TypeScript application provides an intuitive and responsive user interface for the Recipe Hub platform. We've built it with modern web development practices, focusing on type safety, component reusability, and a great user experience.
+Welcome to the Recipe Hub app frontend documentation. This React TypeScript application provides an intuitive and responsive user interface for the Recipe Hub platform. I've built it with modern web development practices, focusing on type safety, component reusability, and a great user experience.
 
 ## Architecture Overview
 
-Our frontend follows a component-based architecture with clear separation of concerns:
+The frontend follows a component-based architecture with clear separation of concerns:
 
 ```mermaid
 graph TB
@@ -46,27 +46,31 @@ The frontend is built using:
 
 ## Component Structure
 
-Our components are organized in a hierarchical structure:
+The components are organized in a hierarchical structure:
 
 ```
 src/
-├── components/
+
+├── components/ 
 │   ├── auth/           # Authentication components
 │   ├── recipes/        # Recipe-related components
-│   ├── comments/       # Comment components
-│   ├── rating/         # Rating components
-│   └── common/         # Shared components
-├── context/           # React Context providers
-├── services/         # API and other services
-├── types/           # TypeScript definitions
-└── hooks/          # Custom React hooks
+│   ├── comments/       # Comment-related components
+│   ├── rating/         # Rating-related components
+│   ├── Header/         # Header component and token-timer
+│   ├── Footer/         # Footer component
+│   └── icons/          # Custom icons for rating system
+├── context/            # React Context providers
+├── services/           # API and other services
+├── types/              # TypeScript definitions
+├── hooks/              # Custom React hooks
+└── pages/              # common use pages
 ```
 
 ## Getting Started
 
 1. Clone the repository and navigate to the frontend directory:
    ```bash
-   cd recipe-hub/frontend
+   cd recipe-hub-app/recipe-hub-frontend
    ```
 
 2. Install dependencies:
@@ -88,10 +92,10 @@ src/
 
 ### Authentication System
 
-Our authentication system uses JWT tokens with automatic refresh capabilities:
+The authentication system uses JWT tokens with automatic refresh capabilities:
 
 ```typescript
-// Example of our AuthContext implementation
+// Example of the AuthContext implementation
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ 
@@ -113,7 +117,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
 ### Rate Limiting Handling
 
-We implement graceful handling of API rate limits:
+I implement graceful handling of API rate limits:
 
 ```typescript
 // Example of rate limit error handling
@@ -131,7 +135,7 @@ const handleError = useCallback((error: unknown) => {
 
 ### Form Validation
 
-Our forms include real-time validation with TypeScript type checking:
+The forms include real-time validation with TypeScript type checking:
 
 ```typescript
 interface RecipeFormData {
@@ -152,7 +156,7 @@ const validateForm = (data: RecipeFormData): boolean => {
 
 ### Recipe Card Component
 
-Our recipe cards use motion animations for smooth interactions:
+The recipe cards use motion animations for smooth interactions:
 
 ```typescript
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, delay = 0 }) => {
@@ -189,7 +193,7 @@ const DifficultyIcon: React.FC<DifficultyIconProps> = ({
 
 ## State Management
 
-We use React Context for state management, organized by feature:
+I used React Context for state management, organized by feature:
 
 1. Authentication State:
    - User information
@@ -208,7 +212,7 @@ We use React Context for state management, organized by feature:
 
 ## Styling Approach
 
-We use Tailwind CSS with a custom configuration:
+I used Tailwind CSS with a custom configuration:
 
 ```typescript
 // tailwind.config.js
@@ -223,40 +227,6 @@ export default {
       }
     }
   }
-};
-```
-
-## Performance Optimizations
-
-1. Lazy Loading:
-   ```typescript
-   const RecipeDetail = React.lazy(() => import('./components/recipes/RecipeDetail'));
-   ```
-
-2. Memoization:
-   ```typescript
-   const MemoizedRecipeCard = React.memo(RecipeCard);
-   ```
-
-3. Pagination Implementation:
-   ```typescript
-   const [currentPage, setCurrentPage] = useState(1);
-   const [totalPages, setTotalPages] = useState(1);
-   ```
-
-## Error Handling
-
-We implement comprehensive error handling:
-
-```typescript
-const ErrorBoundary: React.FC<Props> = ({ children }) => {
-    const [hasError, setHasError] = useState(false);
-    
-    if (hasError) {
-        return <ErrorFallback />;
-    }
-    
-    return children;
 };
 ```
 
@@ -334,4 +304,4 @@ To contribute to the frontend:
 
 ## License
 
-[Your chosen license]
+See LICENSE at root dir

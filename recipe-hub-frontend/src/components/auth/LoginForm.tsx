@@ -47,7 +47,7 @@ const LoginForm: React.FC = () => {
         {/* Top section */}
         <div className="bg-cream rounded-t-lg p-8 shadow-lg">
           <h2 className="text-3xl font-bold text-brown text-center">
-            Welcome back
+            Welcome back chef!
           </h2>
           <p className="mt-2 text-center text-amber-700">
             Sign in to your Recipe Hub account

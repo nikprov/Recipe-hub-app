@@ -106,7 +106,7 @@ const RecipesList: React.FC = () => {
             {/* Header Section with Search */}
             <div className="mb-8">
                 <h1 className="text-3xl font-bold text-brown mb-4">
-                    Discover Delicious Recipes
+                    Discover delicious recipes every day!
                 </h1>
                 
                 {/* Search Bar */}

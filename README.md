@@ -4,7 +4,7 @@ Recipe Hub is a full-stack web application that enables users to share, discover
 
 This full-stack project is the final deliverable for the evaluation of trainee Nikolaos Providakis for the Coding Factory Bootcamp of Athens University of Economics and Business (AUEB).
 
-![Recipe Hub Screenshot](screenshots/recipe-hub-main.png)
+![Recipe Hub Screenshot](screenshots/recipe-hub-app-thumb.jpg)
 
 ### Features ###
 
@@ -36,24 +36,24 @@ recipe-hub/
 │   └── requirements.txt
 │
 ├── frontend/         # React TypeScript frontend
-│   ├── src/         # Source code
-│   ├── public/      # Static files
+│   ├── src/          # Source code
+│   ├── public/       # Static files
 │   └── package.json
 │
-└── README.md        # This file
+└── README.md         # This file
 ```
 
 ## Quick Start
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/[your-username]/recipe-hub.git
+   git clone https://github.com/nikprov/Recipe-hub-app/tree/main
    cd recipe-hub
    ```
 
 2. Follow setup instructions in:
-   - [Backend Setup](backend/README.md)
-   - [Frontend Setup](frontend/README.md)
+   - [Backend Setup](recipe_hub_backend\README_backend.md)
+   - [Frontend Setup](recipe-hub-frontend\README-frontend.md)
 
 ## Demo Data
 
@@ -71,7 +71,7 @@ This will create:
 
 ## Contributing
 
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) first.
+Opinions/contributions are welcome! 
 
 ## License
 
@@ -82,3 +82,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Icons by [Lucide](https://lucide.dev/)
 - UI Components inspired by [shadcn/ui](https://ui.shadcn.com/)
 - Built with [Django REST Framework](https://www.django-rest-framework.org/) and [React](https://reactjs.org/)
+- With the help of LLM Claude Sonnet 3.5 - Professional Plan
