@@ -67,7 +67,7 @@ graph TB
 1. Clone the repository:
    ```bash
    git clone https://github.com/nikprov/Recipe-hub-app/tree/main
-   cd recipe-hub-app/backend
+   cd recipe-hub-app/recipe_hub_backend
    ```
 
 2. Create and activate a virtual environment:
@@ -101,10 +101,8 @@ graph TB
    JWT_REFRESH_TOKEN_LIFETIME=1440  # minutes
    ```
 
-5. Create the MySQL database:
-   ```sql
-   CREATE DATABASE recipe_hub_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-   ```
+5. I recommend using a mySQL database but you can use of course the SQLite that comes out-of-the-box with the Django installation. Should you decide the mySQL (or whichever else) first install it in your system and then create the
+mySQL database within the mySQL Workbench with schema name: `recipe_hub_db`, character set: `utf8mb4` collation: `utf8mb4_0900_ai_ci`.
 
 6. Make and then apply migrations:
    ```bash
