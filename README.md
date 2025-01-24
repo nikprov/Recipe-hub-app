@@ -52,8 +52,8 @@ recipe-hub/
    ```
 
 2. Follow setup instructions in:
-   - [Backend Setup](recipe_hub_backend\readme_backend.md)
-   - [Frontend Setup](recipe-hub-frontend\readme-frontend.md)
+   - [Backend Setup](recipe_hub_backend/readme_backend.md)
+   - [Frontend Setup](recipe-hub-frontend/readme-frontend.md)
 
 ## Demo Data
 
