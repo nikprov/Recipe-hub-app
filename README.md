@@ -15,7 +15,7 @@ This full-stack project is the final deliverable for the evaluation of trainee N
 - Comment on recipes and engage with other users
 - Responsive design works on desktop and mobile devices
 
-![Recipe Hub Moussaka_detail_page Screenshot](screenshots\greek_moussaka_details.jpg)
+![Recipe Hub Moussaka_detail_page Screenshot](screenshots/greek_moussaka_details.jpg)
 
 ### Technical Highlights
 - JWT-based authentication system
