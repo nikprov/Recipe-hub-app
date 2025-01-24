@@ -55,19 +55,25 @@ recipe-hub/
    - [Backend Setup](recipe_hub_backend/readme_backend.md)
    - [Frontend Setup](recipe-hub-frontend/readme-frontend.md)
 
-## Demo Data
+3. Database Setup:
+   The backend comes with a SQL script (`sample_data.sql`) that will populate your database with:
+   - 12 sample recipes from world and Mediterranean cuisine
+   - Test users and their interactions (comments and ratings)
+   - Sample comments and ratings from each user
+   
+   Detailed instructions for database setup and population can be found in the backend README.
 
-For testing purposes, you can populate the database with sample recipes using:
+## Testing the Application
 
+After setup, you can:
+1. Access the admin interface at `/admin` (credentials in backend README)
+2. Use the React frontend to browse and interact with recipes
+3. Test the API directly using either the python test suite with
 ```bash
-# In the backend directory
-python manage.py loaddata sample_recipes
+python manage.py test
 ```
-
-This will create:
-- 12 sample recipes
-- Test users (credentials in backend README)
-- Sample comments and ratings
+(28 tests included) or with Swagger UI at `/api/docs/`
+4. Use the provided test accounts or create your own
 
 ## Contributing
 

@@ -101,43 +101,88 @@ graph TB
    JWT_REFRESH_TOKEN_LIFETIME=1440  # minutes
    ```
 
-5. I recommend using a mySQL database but you can use of course the SQLite that comes out-of-the-box with the Django installation. Should you decide the mySQL (or whichever else) first install it in your system and then create the
+5. ## Database Setup Options
+
+I recommend using a mySQL database but you can use of course the SQLite that comes out-of-the-box with the Django installation. Should you decide the mySQL (or whichever else) first install it in your system and then create the
 mySQL database within the mySQL Workbench with schema name: `recipe_hub_db`, character set: `utf8mb4` collation: `utf8mb4_0900_ai_ci`.
 
-6. Make and then apply migrations:
+### Option 1: SQLite (Simplest)
+Django's default SQLite configuration:
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+```
+
+### Option 2: MySQL (Current Configuration)
+Using environment variables:
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+    }
+}
+```
+
+
+## Make and then apply migrations:
    ```bash
    python manage.py makemigrations
       # and then:
    python manage.py migrate
    ```
 
-7. Create a superuser:
+
+## Creating Admin and some Test Users
+
+1. Create admin superuser:
    ```bash
    python manage.py createsuperuser
    ```
+   Use these credentials:
+   - Username: admin
+   - Email: admin@example.com
+   - Password: AdminPass123! (or simpler for quick-testing purposes like 12345 but change it later)
 
-## Sample Data Generation
+2. Create test users via either ways:
+   - Through the admin interface at `/admin`
+   - Using Django's shell:
+     ```python
+     python manage.py shell
+     
+     from django.contrib.auth.models import User
+     User.objects.create_user('testuser1', 'test1@example.com', 'TestPass123!')
+     User.objects.create_user('testuser2', 'test2@example.com', 'TestPass123!')
+     ```
 
-You have two options for populating the database with sample data:
 
-### Option 1: Using Fixtures
-Load the basic sample data (1 recipe, 1 comment, 1 rating):
-```bash
-python manage.py loaddata sample_recipes
-```
+## Populating with Sample Data
 
-### Option 2: Using Generation Script
-Generate a full set of sample data (12 recipes with comments and ratings):
-```bash
-python manage.py shell < generate_sample_data.py
-```
+1. The `sample_data.sql` script in the `scripts` directory contains:
+   - 12 recipes (world and Mediterranean cuisine)
+   - Comments from admin, testuser1, and testuser2 on each recipe
+   - Difficulty ratings from each user on each recipe
 
-The generation script will create:
-- Admin user (username: adminexample, password: AdminPass123!)
-- Test user (username: testuser1, password: TestPass123!)
-- 12 recipes (6 from each user)
-- 3 comments per recipe
-- 2 ratings per recipe
+2. To execute the script:
+   
+   For SQLite:
+   ```bash
+   sqlite3 db.sqlite3 < scripts/sample_data.sql
+   ```
+
+   For MySQL:
+   ```bash
+   mysql -u your_user -p recipe_hub_db < scripts/sample_data.sql
+   ```
+
 
 ## API Endpoints
 
@@ -207,18 +252,51 @@ Rate limit headers in responses:
 
 ## Testing
 
-Run the comprehensive test suite:
+Run the comprehensive test suite, it covers all major functionality of the application. Key areas tested include:
+
+### Authentication & User Management
+- User registration with validation
+  - Password complexity requirements
+  - Email uniqueness
+  - Username uniqueness
+- JWT token authentication
+- User information retrieval
+- Admin vs regular user permissions
+
+### Recipe Operations
+- Recipe listing and pagination
+- Recipe creation (authenticated users)
+- Recipe updates (authors only)
+- Recipe deletion (authors and admins)
+- Cooking time validation
+- Recipe details retrieval
+
+### Comment System
+- Comment creation on recipes
+- Comment listing per recipe
+- Comment updates (authors only)
+- Comment deletion (authors and admins)
+- Empty comment validation
+- Nested comment relationships
+
+### Difficulty Rating System
+- Rating creation (authenticated users)
+- One rating per user per recipe
+- Rating updates
+- Invalid rating value handling
+- Average rating calculations
+- User-specific rating retrieval
+
+### Security & Permissions
+- Unauthenticated access restrictions
+- Author-only content modification
+- Admin special privileges
+
+
+Run the test suite with:
 ```bash
 python manage.py test
 ```
-
-The test suite covers:
-- Authentication flows
-- CRUD operations
-- Permission checks
-- Rate limiting
-- Data validation
-- Edge cases
 
 ## Security Considerations
 

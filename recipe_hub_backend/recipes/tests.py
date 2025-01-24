@@ -11,26 +11,26 @@ from django.core.cache import cache
 from django.contrib.auth.password_validation import validate_password
 
 
-TEST_THROTTLE_SETTINGS = {
-    'DEFAULT_THROTTLE_CLASSES': [
-        'recipes.api.throttling.RecipeUserThrottle',
-        'recipes.api.throttling.RecipeAnonThrottle',
-    ],
-    'DEFAULT_THROTTLE_RATES': {
-        'user': '5/minute',
-        'anon': '3/minute',
-    }
-}
+# TEST_THROTTLE_SETTINGS = {
+#     'DEFAULT_THROTTLE_CLASSES': [
+#         'recipes.api.throttling.RecipeUserThrottle',
+#         'recipes.api.throttling.RecipeAnonThrottle',
+#     ],
+#     'DEFAULT_THROTTLE_RATES': {
+#         'user': '5/minute',
+#         'anon': '3/minute',
+#     }
+# }
 
-@override_settings(
-    REST_FRAMEWORK=TEST_THROTTLE_SETTINGS,
-    # Use local memory cache for testing
-    CACHES={
-        'default': {
-            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        }
-    }
-)
+# @override_settings(
+#     REST_FRAMEWORK=TEST_THROTTLE_SETTINGS,
+#     # Use local memory cache for testing
+#     CACHES={
+#         'default': {
+#             'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#         }
+#     }
+# )
 
 
 class BaseTestCase(APITestCase):
