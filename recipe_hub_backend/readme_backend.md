@@ -101,67 +101,67 @@ graph TB
    JWT_REFRESH_TOKEN_LIFETIME=1440  # minutes
    ```
 
-5. ## Database Setup Options
+5. Database Setup Options
 
-I recommend using a mySQL database but you can use of course the SQLite that comes out-of-the-box with the Django installation. Should you decide the mySQL (or whichever else) first install it in your system and then create the
-mySQL database within the mySQL Workbench with schema name: `recipe_hub_db`, character set: `utf8mb4` collation: `utf8mb4_0900_ai_ci`.
+   I recommend using a mySQL database but you can use of course the SQLite that comes out-of-the-box with the Django installation. Should you decide the mySQL (or whichever else) first install it in your system and then create the
+   mySQL database within the mySQL Workbench with schema name: `recipe_hub_db`, character set: `utf8mb4` collation: `utf8mb4_0900_ai_ci`.
 
-### Option 1: SQLite (Simplest)
-Django's default SQLite configuration:
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-```
+   ### Option 1: SQLite (Simplest)
+   Django's default SQLite configuration:
+   ```python
+   DATABASES = {
+      'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
+      }
+   }
+   ```
 
-### Option 2: MySQL (Current Configuration)
-Using environment variables:
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
-    }
-}
-```
-
-
-## Make and then apply migrations:
-   ```bash
-   python manage.py makemigrations
-      # and then:
-   python manage.py migrate
+   ### Option 2: MySQL (Current Configuration)
+   Using environment variables:
+   ```python
+   DATABASES = {
+      'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': os.getenv('DB_NAME'),
+         'USER': os.getenv('DB_USER'),
+         'PASSWORD': os.getenv('DB_PASSWORD'),
+         'HOST': os.getenv('DB_HOST'),
+         'PORT': os.getenv('DB_PORT'),
+      }
+   }
    ```
 
 
-## Creating Admin and some Test Users
+   ## Make and then apply migrations:
+      ```bash
+      python manage.py makemigrations
+         # and then:
+      python manage.py migrate
+      ```
 
-1. Create admin superuser:
-   ```bash
-   python manage.py createsuperuser
-   ```
-   Use these credentials:
-   - Username: admin
-   - Email: admin@example.com
-   - Password: AdminPass123! (or simpler for quick-testing purposes like 12345 but change it later)
 
-2. Create test users via either ways:
-   - Through the admin interface at `/admin`
-   - Using Django's shell:
-     ```python
-     python manage.py shell
-     
-     from django.contrib.auth.models import User
-     User.objects.create_user('testuser1', 'test1@example.com', 'TestPass123!')
-     User.objects.create_user('testuser2', 'test2@example.com', 'TestPass123!')
-     ```
+   ## Creating Admin and some Test Users
+
+   1. Create admin superuser:
+      ```bash
+      python manage.py createsuperuser
+      ```
+      Use these credentials:
+      - Username: admin
+      - Email: admin@example.com
+      - Password: AdminPass123! (or simpler for quick-testing purposes like 12345 but change it later)
+
+   2. Create test users via either ways:
+      - Through the admin interface at `/admin`
+      - Using Django's shell:
+      ```python
+      python manage.py shell
+      
+      from django.contrib.auth.models import User
+      User.objects.create_user('testuser1', 'test1@example.com', 'TestPass123!')
+      User.objects.create_user('testuser2', 'test2@example.com', 'TestPass123!')
+      ```
 
 
 ## Populating with Sample Data

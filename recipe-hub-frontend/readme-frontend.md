@@ -78,12 +78,7 @@ src/
    npm install
    ```
 
-3. Create a `.env` file in the frontend directory:
-   ```env
-   VITE_API_URL=http://localhost:8000/api
-   ```
-
-4. Start the development server:
+3. Start the development server:
    ```bash
    npm run dev
    ```
@@ -232,17 +227,7 @@ export default {
 
 ## Testing
 
-Run the test suite:
-```bash
-npm run test
-```
-
-Key testing areas:
-- Component rendering
-- User interactions
-- API integration
-- Error handling
-- Authentication flows
+    -To be added soon... (Cypress)
 
 ## Development Guidelines
 
@@ -280,7 +265,7 @@ Key testing areas:
    ```
 
 3. CORS Issues:
-   - Check API URL in .env
+   - Check API URL
    - Verify backend CORS settings
    - Check network requests
 

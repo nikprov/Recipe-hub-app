@@ -15,6 +15,8 @@ This full-stack project is the final deliverable for the evaluation of trainee N
 - Comment on recipes and engage with other users
 - Responsive design works on desktop and mobile devices
 
+![Recipe Hub Moussaka_detail_page Screenshot](screenshots\greek_moussaka_details.jpg)
+
 ### Technical Highlights
 - JWT-based authentication system
 - Rate limiting to prevent abuse
@@ -72,7 +74,8 @@ After setup, you can:
 ```bash
 python manage.py test
 ```
-(28 tests included) or with Swagger UI at `/api/docs/`
+(28 tests included) or with Swagger UI at `/api/docs/` 
+
 4. Use the provided test accounts or create your own
 
 ## Contributing
