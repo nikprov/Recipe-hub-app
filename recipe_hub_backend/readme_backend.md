@@ -298,6 +298,16 @@ Run the test suite with:
 python manage.py test
 ```
 
+## Swagger API documentation - Testing - Swagger spectacular
+
+Access the API documentation at:
+
+Swagger UI: http://localhost:8000/api/docs/
+
+ReDoc: http://localhost:8000/api/redoc/
+
+Raw Schema: http://localhost:8000/api/schema/
+
 ## Security Considerations
 
 1. Password Security:
