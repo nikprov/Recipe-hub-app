@@ -151,7 +151,15 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',  # Browserable authentication
-    )
+    ),
+    'DEFAULT_THROTTLE_CLASSES': [
+        'recipes.api.throttling.RecipeUserThrottle',
+        'recipes.api.throttling.RecipeAnonThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'user': '5/minute',
+        'anon': '3/minute',
+    }
 }
 
 REST_AUTH = {

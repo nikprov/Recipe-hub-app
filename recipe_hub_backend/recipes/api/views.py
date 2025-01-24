@@ -1,4 +1,4 @@
-# recipes/api/views.py
+# recipe_hub_backend\recipes\api\views.py
 
 from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import api_view, permission_classes
@@ -182,7 +182,7 @@ class DifficultyRatingViewSet(viewsets.ModelViewSet):
             rating_author=self.request.user
         ).exists():
             raise ValidationError({
-                "detail": "You have already given a difficulty rating. If you want to change your rating, update it."
+                "detail": "You have already given a difficulty rating for this recipe. If you want to change your rating, update it."
             })
             
         # Create new rating

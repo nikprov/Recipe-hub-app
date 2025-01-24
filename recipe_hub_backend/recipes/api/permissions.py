@@ -19,7 +19,7 @@ class IsAdminUserOrReadOnly(permissions.IsAdminUser):
 class IsNotAuthenticated(permissions.BasePermission):
     """
     Custom permission class that only allows unauthenticated users to access the view.
-    This is particularly useful for registration endpoints where we want to prevent
+    This is particularly useful for registration endpoints where we want e.g. to prevent
     already logged-in users from creating new accounts.
     """
     def has_permission(self, request, view):

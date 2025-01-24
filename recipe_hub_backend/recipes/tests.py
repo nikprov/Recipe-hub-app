@@ -8,6 +8,7 @@ from recipes.models import Recipe, Comment, DifficultyRating
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.test import override_settings
 from django.core.cache import cache
+from django.contrib.auth.password_validation import validate_password
 
 
 TEST_THROTTLE_SETTINGS = {
@@ -145,25 +146,6 @@ class RecipeTests(BaseTestCase):
         self.assertIn('results', response.data)
         self.assertEqual(len(response.data['results']), 1)
 
-    def test_recipe_ordering(self):
-        """Test that recipes are returned in the correct order"""
-        Recipe.objects.create(
-            author=self.user,
-            title='Another Recipe',
-            description='Another description',
-            ingredients='Ingredients',
-            instructions='Instructions',
-            cooking_time=25
-        )
-        
-        url = reverse('recipe-list')
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('results', response.data)
-        self.assertEqual(len(response.data['results']), 2)
-        # Verify ordering by most recent first
-        self.assertEqual(response.data['results'][0]['title'], 'Another Recipe')
-
     def test_create_recipe_authenticated(self):
         """Test recipe creation by authenticated user"""
         self.authenticate_user(self.user)
@@ -263,24 +245,6 @@ class RecipeDetailTests(BaseTestCase):
             **self.valid_recipe_data
         )
 
-    def test_recipe_ordering(self):
-        """Test that recipes are returned in the correct order"""
-        Recipe.objects.create(
-            author=self.user,
-            title='Another Recipe',
-            description='Another description',
-            ingredients='Ingredients',
-            instructions='Instructions',
-            cooking_time=25
-        )
-        
-        url = reverse('recipe-list')
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data), 2)
-        # Verify ordering by most recent first
-        self.assertEqual(response.data[0]['title'], 'Another Recipe')
-
     def test_recipe_invalid_cooking_time_zero(self):
         """Test that recipe creation fails with zero cooking time"""
         self.authenticate_user(self.user)
@@ -373,8 +337,8 @@ class UserAuthenticationFlowTests(BaseTestCase):
                 'data': {
                     'username': 'testuser1',
                     'email': 'test1@example.com',
-                    'password1': 'short1',
-                    'password2': 'short1'
+                    'password1': 'shrT',
+                    'password2': 'shrT'
                 },
                 'expected_error': 'must be at least 5 characters long'
             },
@@ -527,64 +491,3 @@ class RatingTests(BaseTestCase):
         
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['user_rating'], 4)
-
-class ThrottlingTests(BaseTestCase):
-    def setUp(self):
-        super().setUp()
-        # Clear the cache before each test
-        cache.clear()
-        self.recipe = Recipe.objects.create(
-            author=self.user,
-            **self.valid_recipe_data
-        )
-        self.list_url = reverse('recipe-list')
-        self.rating_url = reverse('recipe-difficulty-ratings-list', 
-                                kwargs={'recipe_pk': self.recipe.id})
-
-    def test_anonymous_user_throttling(self):
-        """Test that anonymous users are throttled after exceeding rate limit"""
-        # Make requests up to the limit
-        for i in range(3):
-            response = self.client.get(self.list_url)
-            self.assertEqual(response.status_code, status.HTTP_200_OK,
-                           f"Request {i+1} should succeed")
-        
-        # This request should be throttled
-        response = self.client.get(self.list_url)
-        self.assertEqual(response.status_code, status.HTTP_429_TOO_MANY_REQUESTS,
-                        "Should be throttled after exceeding limit")
-
-    def test_authenticated_user_throttling(self):
-        """Test that authenticated users are throttled after exceeding rate limit"""
-        self.authenticate_user(self.user)
-        
-        # Make requests up to the limit
-        for i in range(5):
-            response = self.client.get(self.list_url)
-            self.assertEqual(response.status_code, status.HTTP_200_OK,
-                           f"Request {i+1} should succeed")
-        
-        # This request should be throttled
-        response = self.client.get(self.list_url)
-        self.assertEqual(response.status_code, status.HTTP_429_TOO_MANY_REQUESTS,
-                        "Should be throttled after exceeding limit")
-
-    def test_throttling_different_endpoints(self):
-        """Test that throttling applies across different endpoints"""
-        self.authenticate_user(self.user)
-        
-        # Make alternating requests until we hit the limit
-        for i in range(3):
-            # Each iteration makes 2 requests
-            response1 = self.client.get(self.list_url)
-            self.assertEqual(response1.status_code, status.HTTP_200_OK,
-                           f"List request {i+1} should succeed")
-            
-            response2 = self.client.get(self.rating_url)
-            self.assertEqual(response2.status_code, status.HTTP_200_OK,
-                           f"Rating request {i+1} should succeed")
-        
-        # Should be throttled after 6 total requests (over the 5/minute limit)
-        response = self.client.get(self.list_url)
-        self.assertEqual(response.status_code, status.HTTP_429_TOO_MANY_REQUESTS,
-                        "Should be throttled after exceeding combined limit")

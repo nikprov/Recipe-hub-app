@@ -2,7 +2,7 @@
 
 Recipe Hub is a full-stack web application that enables users to share, discover, comment and rate recipes. Built with Django REST Framework and React TypeScript, it features a robust backend API and an intuitive, responsive frontend interface.
 
-This full-stack project is the final deliverable for the evaluation of trainee Nikolaos Providakis for the Coding Factory Bootcamp of Athens University of Economics and Business (AUEB).
+This full-stack project is the final deliverable for the evaluation of trainee Nikolaos Providakis (CF6) for the Coding Factory Bootcamp of Athens University of Economics and Business (AUEB).
 
 ![Recipe Hub Screenshot](screenshots/recipe-hub-app-thumb.jpg)
 
@@ -52,8 +52,8 @@ recipe-hub/
    ```
 
 2. Follow setup instructions in:
-   - [Backend Setup](recipe_hub_backend\README_backend.md)
-   - [Frontend Setup](recipe-hub-frontend\README-frontend.md)
+   - [Backend Setup](recipe_hub_backend\readme_backend.md)
+   - [Frontend Setup](recipe-hub-frontend\readme-frontend.md)
 
 ## Demo Data
 
@@ -82,4 +82,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Icons by [Lucide](https://lucide.dev/)
 - UI Components inspired by [shadcn/ui](https://ui.shadcn.com/)
 - Built with [Django REST Framework](https://www.django-rest-framework.org/) and [React](https://reactjs.org/)
-- With the help of LLM Claude Sonnet 3.5 - Professional Plan
+- With the assistance of LLM Claude Sonnet 3.5 - Professional Plan
