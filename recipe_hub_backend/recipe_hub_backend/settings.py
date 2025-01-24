@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth.registration',
+    'drf_spectacular',
+    'drf_spectacular_sidecar',
 ]
 
 MIDDLEWARE = [
@@ -159,7 +161,8 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'user': '5/minute',
         'anon': '3/minute',
-    }
+    },
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 REST_AUTH = {
@@ -236,3 +239,46 @@ MEDIA_ROOT='uploads'
 SITE_ID=1
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_REQUIRED = (True)
+
+# Spectacular settings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Recipe Hub API',
+    'DESCRIPTION': 'API for managing recipes, comments, and ratings',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_DIST': 'SIDECAR',  # shorthand to use the sidecar instead
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
+    
+    # Authentication and tokens
+    'SECURITY': [
+        {
+            'Bearer': {
+                'type': 'apiKey',
+                'name': 'Authorization',
+                'in': 'header',
+                'description': 'Enter your Bearer token in the format: Bearer <token>'
+            }
+        }
+    ],
+    
+    # Optional customization
+    'SWAGGER_UI_SETTINGS': {
+        'deepLinking': True,
+        'persistAuthorization': True,
+        'displayOperationId': True,
+    },
+    
+    # Tags
+    'TAGS': [
+        {'name': 'auth', 'description': 'Authentication endpoints'},
+        {'name': 'recipes', 'description': 'Recipe operations'},
+        {'name': 'comments', 'description': 'Comment operations'},
+        {'name': 'ratings', 'description': 'Rating operations'},
+    ],
+    
+    # Enum naming
+    'ENUM_NAME_OVERRIDES': {
+        'ValidationErrorEnum': 'recipes.serializers.ValidationError',
+    }
+}

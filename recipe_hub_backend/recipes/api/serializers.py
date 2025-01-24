@@ -5,8 +5,29 @@ from django.contrib.auth.models import User
 from ..models import Recipe, Comment, DifficultyRating
 from django.contrib.auth.password_validation import validate_password
 from django.core.validators import EmailValidator
+from drf_spectacular.utils import (
+    extend_schema, 
+    extend_schema_view,
+    extend_schema_serializer,
+    OpenApiParameter,
+    OpenApiExample,
+    OpenApiResponse
+)
+from drf_spectacular.types import OpenApiTypes
 
-
+@extend_schema_serializer(
+    examples=[
+        OpenApiExample(
+            'Valid Registration',
+            value={
+                'username': 'newuser',
+                'email': 'user@example.com',
+                'password1': 'StrongPass123',
+                'password2': 'StrongPass123'
+            }
+        )
+    ]
+)
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password1 = serializers.CharField(write_only=True, style={'input_type': 'password'})
     password2 = serializers.CharField(write_only=True, style={'input_type': 'password'})
@@ -85,6 +106,20 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = ('id', 'recipe', 'author', 'content', 'created_at', 'updated_at')
         read_only_fields = ('created_at', 'updated_at', 'author', 'recipe')
 
+@extend_schema_serializer(
+    examples=[
+        OpenApiExample(
+            'Recipe Example',
+            value={
+                'title': 'Pizza Margherita',
+                'description': 'Classic Italian pizza',
+                'ingredients': 'Dough, tomatoes, mozzarella, basil',
+                'instructions': '1. Prepare dough\n2. Add toppings\n3. Bake',
+                'cooking_time': 45
+            }
+        )
+    ]
+)
 class RecipeSerializer(serializers.ModelSerializer):
     """
     Serializer for the Recipe model.
