@@ -64,6 +64,9 @@ recipe-hub/
    - Sample comments and ratings from each user
    
    Detailed instructions for database setup and population can be found in the backend README.
+   
+4. File relative paths:
+   All files have their relative path commented out at the beginning to help in maintaining the app structure.
 
 ## Testing the Application
 

@@ -1,4 +1,5 @@
 // src/components/rating/DifficultyRatingSection.tsx
+
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import DifficultyIcon from './DifficultyIcon';
@@ -40,7 +41,7 @@ interface UpdateRecord {
 const UPDATE_LIMIT_KEY = 'recipe_rating_updates';
 const WINDOW_DURATION = 60000; // 1 minute in milliseconds
 const WARNING_THRESHOLD = 2; // Show warning after 2 updates
-const MAX_UPDATES = 4;      // Hard limit at 3 updates before backend limit of 5
+const MAX_UPDATES = 4;      // Hard limit at 4 updates before backend limit of 5
 
 // Helper functions for update tracking
 const getRecentUpdates = (): UpdateRecord[] => {

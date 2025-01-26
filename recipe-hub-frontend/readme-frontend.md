@@ -1,6 +1,6 @@
 # Recipe Hub Frontend
 
-Welcome to the Recipe Hub app frontend documentation. This React TypeScript application provides an intuitive and responsive user interface for the Recipe Hub platform. I've built it with modern web development practices, focusing on type safety, component reusability, and a great user experience.
+Welcome to the Recipe Hub app frontend documentation. This React TypeScript application provides an intuitive and responsive user interface for the Recipe Hub platform. I've built it with modern web development practices, focusing on type safety, component reusability, and a great user experience. Inside the code of each component there are brief explanations of what and why do some elements exist at each respective place.
 
 ## Architecture Overview
 
@@ -29,7 +29,6 @@ graph TB
     subgraph UI Components
         Pages[Page Components]
         Features[Feature Components]
-        Common[Common Components]
     end
 ```
 
@@ -227,7 +226,7 @@ export default {
 
 ## Testing
 
-    -To be added soon... (Cypress)
+    -To be added later... (Cypress)
 
 ## Development Guidelines
 
@@ -281,7 +280,11 @@ To contribute to the frontend:
 
 ## Available Scripts
 
-- `npm run dev`: Start development server
+This application is made for development purposes only and thus only 
+the script `npm run dev` is intented to be used. The rest available below,
+though they may work I cannot guarantee they will run successfully.
+
+- `npm run dev`: Start development server 
 - `npm run build`: Build for production
 - `npm run preview`: Preview production build
 - `npm run lint`: Run ESLint

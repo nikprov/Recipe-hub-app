@@ -1,3 +1,5 @@
+// recipe-hub-frontend\src\components\auth\FormInput.tsx
+
 import React from 'react';
 import { AlertCircle } from 'lucide-react';
 

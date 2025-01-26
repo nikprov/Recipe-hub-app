@@ -8,17 +8,17 @@ import { AxiosError } from 'axios';
 
 const API_URL = 'http://localhost:8000/api';
 
-// Create an axios instance for authenticated requests
+// Here we create an axios instance for authenticated requests
 const api = axios.create({
     baseURL: API_URL,
 });
 
-// Create a separate axios instance for public endpoints
+// Here we create a separate axios instance for public endpoints
 const publicApi = axios.create({
     baseURL: API_URL,
 });
 
-// Add token to requests if it exists, but only for authenticated api instance
+// Here we add token to requests if it exists, but only for authenticated api instance
 api.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -46,6 +46,16 @@ export const useThrottleHandler = () => {
     return handleError;
   };
 
+// Here we define what fields are actually required for updating a recipe
+type RecipeUpdateData = {
+    title: string;
+    description: string;
+    ingredients: string;
+    instructions: string;
+    cooking_time: number;
+    author: string | { username: string; id: number; email: string };
+};
+
 export const RecipeService = {
     // Public endpoints use publicApi
     getAll: (page: number = 1) => 
@@ -54,7 +64,7 @@ export const RecipeService = {
     // Protected endpoints use authenticated api
     create: (recipe: Omit<Recipe, 'id' | 'comments'>) => 
         api.post<Recipe>('/recipes/', recipe),
-    update: (id: number, recipe: Omit<Recipe, 'id' | 'comments'>) =>
+    update: (id: number, recipe: RecipeUpdateData) =>
         api.put<Recipe>(`/recipes/${id}/`, recipe),
     delete: (id: number) => api.delete(`/recipes/${id}/`),
 };

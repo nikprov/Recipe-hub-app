@@ -1,4 +1,5 @@
 // src/components/rating/DifficultyIcon.tsx
+
 import React from 'react';
 import Caserole from '../icons/Caserole';
 

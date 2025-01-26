@@ -1,4 +1,5 @@
 // src/components/common/ThrottleErrorPage.tsx
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChefHat, ArrowLeft } from 'lucide-react';

@@ -1,4 +1,5 @@
 // src/components/icons/Caserole.tsx
+
 import React from 'react';
 
 interface CaseroleProps {

@@ -1,3 +1,5 @@
+// recipe-hub-frontend\src\components\auth\RegisterForm.tsx
+
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { UserPlus, AlertCircle } from 'lucide-react';

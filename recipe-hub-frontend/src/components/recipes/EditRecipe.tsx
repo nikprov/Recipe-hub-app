@@ -7,6 +7,15 @@ import { RecipeService } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 import RecipeForm from './RecipeForm';
 
+
+type RecipeFormData = {
+    title: string;
+    description: string;
+    ingredients: string;
+    instructions: string;
+    cooking_time: number;
+};
+
 const EditRecipe: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
@@ -62,17 +71,21 @@ const EditRecipe: React.FC = () => {
         return <Navigate to="/" replace />;
     }
 
-    const handleSubmit = async (formData: Partial<Recipe>) => {
+    const handleSubmit = async (formData: RecipeFormData) => {
+        if (!recipe) return;
+        
         try {
-            const response = await RecipeService.update(recipe.id, {
+            // Create a properly typed update object
+            const updateData = {
                 ...formData,
-                author: recipe.author // Preserve the original author
-            });
-            // Navigate to the recipe detail page after successful update
+                author: recipe.author,
+            };
+
+            const response = await RecipeService.update(recipe.id, updateData);
             navigate(`/recipe/${response.data.id}`);
         } catch (error) {
             console.error('Failed to update recipe:', error);
-            throw error; // Let the form handle the error display
+            throw error;
         }
     };
 

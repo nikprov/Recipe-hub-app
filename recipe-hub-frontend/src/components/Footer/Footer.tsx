@@ -1,13 +1,108 @@
-// recipe-hub-frontend\src\components\Footer\Footer.tsx
+// recipe-hub-frontend/src/components/Footer/Footer.tsx
 
-
-// Footer.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChefHat, Github, Heart } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
+
+// Firstly we have to define interfaces for all properties for type
+// specificity. We do this for common properties, navigation links, action links and
+// one union type that will include all possible link types.
+
+// Here we define the base interface for common properties
+interface BaseLink {
+  label: string;
+  to: string;
+}
+
+// Here we define the interface for navigation links
+interface NavigationLink extends BaseLink {
+  type: 'navigation';
+}
+
+// Here we define the interface for action links (like logout)
+interface ActionLink extends BaseLink {
+  type: 'action';
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+// Here we create a union type for all possible link types
+type QuickLink = NavigationLink | ActionLink;
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const { user, logout } = useAuth();
+
+  const renderQuickLinks = () => {
+    // Start with home link which is always present
+    const links: QuickLink[] = [
+      {
+        type: 'navigation',
+        to: "/",
+        label: "Home"
+      }
+    ];
+
+    if (user) {
+      // Add authenticated user links
+      links.push(
+        {
+          type: 'navigation',
+          to: "/recipe/new",
+          label: "Create Recipe"
+        },
+        {
+          type: 'action',
+          to: "#",
+          label: "Log Out",
+          onClick: (e) => {
+            e.preventDefault();
+            logout();
+          }
+        }
+      );
+    } else {
+      // Add unauthenticated user links
+      links.push(
+        {
+          type: 'navigation',
+          to: "/login",
+          label: "Login"
+        },
+        {
+          type: 'navigation',
+          to: "/register",
+          label: "Register"
+        }
+      );
+    }
+
+    return (
+      <ul className="space-y-2">
+        {links.map((link, index) => (
+          <li key={index}>
+            {link.type === 'action' ? (
+              // Render button for action links
+              <button
+                onClick={link.onClick}
+                className="text-amber-600 hover:text-brown transition-colors"
+              >
+                {link.label}
+              </button>
+            ) : (
+              // Render Link component for navigation links
+              <Link
+                to={link.to}
+                className="text-amber-600 hover:text-brown transition-colors"
+              >
+                {link.label}
+              </Link>
+            )}
+          </li>
+        ))}
+      </ul>
+    );
+  };
 
   return (
     <footer className="bg-cream shadow-inner">
@@ -20,30 +115,15 @@ const Footer: React.FC = () => {
               <span className="text-2xl font-bold text-brown">Recipe Hub</span>
             </div>
             <p className="text-amber-700">
-              Share your favorite recipes and discover new ones from our community of food lovers. Write about your experiences to help others prepare the best dish for the day!
+              Share your favorite recipes and discover new ones from our community of food lovers. 
+              Write about your experiences to help others prepare the best dish for the day!
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold text-brown mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-amber-600 hover:text-brown transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/login" className="text-amber-600 hover:text-brown transition-colors">
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link to="/register" className="text-amber-600 hover:text-brown transition-colors">
-                  Register
-                </Link>
-              </li>
-            </ul>
+            {renderQuickLinks()}
           </div>
 
           {/* Contact/Social */}
