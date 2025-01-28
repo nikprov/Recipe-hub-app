@@ -73,7 +73,9 @@ ROOT_URLCONF = 'recipe_hub_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates',  # This line to include the templates directory
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,6 +93,18 @@ WSGI_APPLICATION = 'recipe_hub_backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+# Here, I include two configurations for databases. The first one commented-out is needed should you
+# choose to use the default django SQLite3 database. The second and enabled configuration points
+# at the .env file at the root dir and requires installing the mySQL database prior to any migrations.
+# Un-comment whichever you prefere to work with, and subsequently comment-out the other.
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 DATABASES = {
     'default': {

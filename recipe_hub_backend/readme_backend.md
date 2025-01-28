@@ -97,13 +97,16 @@ This approach creates a new Django project from scratch and then integrates our 
    git clone https://github.com/nikprov/Recipe-hub-app.git temp_repo
    ```
 
-5. Copy our application files over your new project:
+5. Copy or save the `SECRET_KEY='thesecretkey...'` from `recipe_hub_backend/settings.py` 
+   You will need this at the later step of setting the .env file.
+
+6. Copy our application files over your new project. Do it manually or with:
    ```bash
    cp -r temp_repo/recipe_hub_backend/* .
    rm -rf temp_repo
    ```
 
-6. Install dependencies:
+7. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
@@ -148,16 +151,58 @@ This approach directly clones our repository:
    python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
    ```
 
-3. Update your `.env` file with the new secret key
+3. Update your `.env` file with the new secret key you kept aside from the settings.py (as instructed in the previous guide section).
 
-4. Initialize the database:
+4. Choose the database and configure it in settings or/and in .env
+
+    There are two configurations for databases in the settings.py file. The first one commented-out is needed should you
+      choose to use the default django SQLite3 database. The second and enabled configuration points
+      at the .env file at the root dir and requires installing the mySQL database prior to any migrations.
+      Un-comment whichever you prefere to work with, and subsequently comment-out the other.
+```
+# recipe_hub_backend\recipe_hub_backend\settings.py
+
+DATABASES = {
+      'default': {
+           'ENGINE': 'django.db.backends.sqlite3',
+          'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+    }
+}
+
+# in the:  recipe_hub_backend\.env
+
+# Database configuration - Again comment-out whichever you don't use.
+
+# Option 1: SQLite (simpler setup)
+# DATABASE_URL=sqlite:///db.sqlite3
+
+# Option 2: MySQL configuration (if you choose to use MySQL)
+# DB_NAME=recipe_hub_db
+# DB_USER=your_db_user
+# DB_PASSWORD=your_db_password
+# DB_HOST=localhost
+# DB_PORT=3306
+```
+
+5. Initialize the database:
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
    In case of using mySQL or other external DB, make sure you have correct credentials for the database user and its permissions on the database in the .env file.
 
-5. Create a superuser:
+6. Create a superuser with name "admin":
    ```bash
    python manage.py createsuperuser
    ```
@@ -168,13 +213,23 @@ This approach directly clones our repository:
 You have three options for loading sample data:
 
 ### Option 1: Using Django Management Command (Recommended)
+
+The sample data script will use the fixtures JSON file containing 12 recipes posted by three users with the following test credentials:
+
+Admin (staff member)
+Username: admin,
+
+TestUser1 (non staff users):
+Usernames: testuser1, testuser2
+
+So in order to be parsed successfuly you need to create apart from the staff "admin" user also the other two non-staff users named "testuser1" and "testuser2". Do this manually via the admin django interface (http://localhost:8000/admin). Then run the following command from the root dir (recipe_hub_backend>):
 ```bash
-python manage.py populate_sample_data
+python scripts/populate_sample_data.py
 ```
 
 ### Option 2: Using JSON Fixture
 ```bash
-python manage.py loaddata sample_data.json
+python manage.py loaddata recipe_hub_sample_data.json
 ```
 
 ### Option 3: Using SQL Script (MySQL only)
@@ -187,7 +242,7 @@ mysql -u your_user -p recipe_hub_db < scripts/sample_data.sql
 ```bash
 python manage.py runserver
 ```
-
+This will show a clickable link in the console that leads to the `home.html` template with various shortcuts.
 Visit http://localhost:8000/admin to verify your installation.
 
 ## Troubleshooting

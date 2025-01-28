@@ -26,17 +26,28 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
     SpectacularRedocView
 )
+from .views import HomeView
 
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    
+    # Home view as the root URL
+    path('', HomeView.as_view(), name='home'),
+
+    # API URLs
     path('', include('recipes.urls')),
+
+    # administrative urls
+    path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),  # This enables the login link
+
     # The following three are the JWT authentication endpoints
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+
+    # API Documentation
     # OpenAPI schema
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     # Swagger UI:

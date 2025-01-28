@@ -1,0 +1,962 @@
+[
+    {
+        "model": "recipes.recipe",
+        "pk": 1,
+        "fields": {
+            "title": "Classic Greek Moussaka",
+            "description": "Traditional Greek dish with layers of eggplant, spiced ground meat, and béchamel sauce",
+            "ingredients": "Eggplants\nGround lamb\nOnions\nGarlic\nTomatoes\nCinnamon\nAllspice\nFlour\nMilk\nEggs\nNutmeg",
+            "instructions": "1. Slice and salt eggplants\n2. Make meat sauce with spices\n3. Prepare béchamel\n4. Layer and bake",
+            "cooking_time": 90,
+            "created_at": "2024-01-28T10:00:00Z",
+            "updated_at": "2024-01-28T10:00:00Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 2,
+        "fields": {
+            "title": "Spanish Paella",
+            "description": "Authentic Spanish rice dish with seafood and saffron",
+            "ingredients": "Rice\nSaffron\nShrimp\nMussels\nChicken\nPeas\nRed peppers\nOnion\nGarlic\nOlive oil",
+            "instructions": "1. Cook sofrito\n2. Add rice and saffron\n3. Add proteins\n4. Let form socarrat",
+            "cooking_time": 60,
+            "created_at": "2024-01-28T10:01:00Z",
+            "updated_at": "2024-01-28T10:01:00Z",
+            "author": 2
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 3,
+        "fields": {
+            "title": "Italian Risotto alla Milanese",
+            "description": "Creamy saffron risotto from Milan",
+            "ingredients": "Arborio rice\nSaffron\nOnion\nWhite wine\nParmesan\nButter\nChicken stock",
+            "instructions": "1. Toast rice\n2. Add wine\n3. Gradually add stock\n4. Finish with cheese",
+            "cooking_time": 45,
+            "created_at": "2024-01-28T10:02:00Z",
+            "updated_at": "2024-01-28T10:02:00Z",
+            "author": 3
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 4,
+        "fields": {
+            "title": "Japanese Ramen",
+            "description": "Rich and comforting noodle soup with pork and eggs",
+            "ingredients": "Ramen noodles\nPork belly\nSoy sauce\nMirin\nEggs\nNori\nGreen onions\nGarlic\nGinger",
+            "instructions": "1. Prepare broth\n2. Cook chashu pork\n3. Boil eggs\n4. Assemble bowl",
+            "cooking_time": 120,
+            "created_at": "2024-01-28T10:03:00Z",
+            "updated_at": "2024-01-28T10:03:00Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 5,
+        "fields": {
+            "title": "Indian Butter Chicken",
+            "description": "Creamy and rich North Indian curry",
+            "ingredients": "Chicken\nYogurt\nTomatoes\nButter\nCream\nGaram masala\nFenugreek\nGinger\nGarlic",
+            "instructions": "1. Marinate chicken\n2. Make tomato gravy\n3. Combine and simmer",
+            "cooking_time": 60,
+            "created_at": "2024-01-28T10:04:00Z",
+            "updated_at": "2024-01-28T10:04:00Z",
+            "author": 2
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 6,
+        "fields": {
+            "title": "Thai Green Curry",
+            "description": "Aromatic coconut curry with vegetables",
+            "ingredients": "Green curry paste\nCoconut milk\nChicken\nBamboo shoots\nThai basil\nFish sauce\nPalm sugar",
+            "instructions": "1. Heat curry paste\n2. Add coconut milk\n3. Cook chicken\n4. Add vegetables",
+            "cooking_time": 45,
+            "created_at": "2024-01-28T10:05:00Z",
+            "updated_at": "2024-01-28T10:05:00Z",
+            "author": 3
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 7,
+        "fields": {
+            "title": "Turkish Pide",
+            "description": "Boat-shaped flatbread with toppings",
+            "ingredients": "Flour\nYeast\nWater\nGround meat\nOnions\nTomatoes\nParsley\nSpices",
+            "instructions": "1. Make dough\n2. Prepare filling\n3. Shape and fill\n4. Bake",
+            "cooking_time": 75,
+            "created_at": "2024-01-28T10:06:00Z",
+            "updated_at": "2024-01-28T10:06:00Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 8,
+        "fields": {
+            "title": "Moroccan Tagine",
+            "description": "Slow-cooked stew with preserved lemons",
+            "ingredients": "Lamb\nPreserved lemons\nOlives\nOnions\nGarlic\nSaffron\nGinger\nCoriander",
+            "instructions": "1. Brown meat\n2. Add spices\n3. Slow cook\n4. Garnish",
+            "cooking_time": 90,
+            "created_at": "2024-01-28T10:07:00Z",
+            "updated_at": "2024-01-28T10:07:00Z",
+            "author": 2
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 9,
+        "fields": {
+            "title": "Vietnamese Pho",
+            "description": "Traditional beef noodle soup",
+            "ingredients": "Rice noodles\nBeef bones\nBeef slices\nOnion\nGinger\nStar anise\nCinnamon\nHerbs",
+            "instructions": "1. Make broth\n2. Cook noodles\n3. Slice beef\n4. Assemble",
+            "cooking_time": 180,
+            "created_at": "2024-01-28T10:08:00Z",
+            "updated_at": "2024-01-28T10:08:00Z",
+            "author": 3
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 10,
+        "fields": {
+            "title": "Mexican Mole",
+            "description": "Complex sauce with chocolate and chilies",
+            "ingredients": "Chilies\nChocolate\nNuts\nSpices\nTomatoes\nChicken\nSesame seeds",
+            "instructions": "1. Toast ingredients\n2. Blend sauce\n3. Cook chicken\n4. Combine",
+            "cooking_time": 120,
+            "created_at": "2024-01-28T10:09:00Z",
+            "updated_at": "2024-01-28T10:09:00Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 11,
+        "fields": {
+            "title": "Korean Bibimbap",
+            "description": "Rice bowl with vegetables and egg",
+            "ingredients": "Rice\nSpinach\nCarrots\nBean sprouts\nBeef\nEggs\nGochujang\nSesame oil",
+            "instructions": "1. Cook rice\n2. Prepare vegetables\n3. Cook egg\n4. Assemble bowl",
+            "cooking_time": 45,
+            "created_at": "2024-01-28T10:10:00Z",
+            "updated_at": "2024-01-28T10:10:00Z",
+            "author": 2
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 12,
+        "fields": {
+            "title": "French Coq au Vin",
+            "description": "Classic chicken braised in wine",
+            "ingredients": "Chicken\nRed wine\nMushrooms\nPearl onions\nBacon\nThyme\nBay leaves",
+            "instructions": "1. Brown chicken\n2. Cook vegetables\n3. Braise in wine\n4. Reduce sauce",
+            "cooking_time": 90,
+            "created_at": "2024-01-28T10:11:00Z",
+            "updated_at": "2024-01-28T10:11:00Z",
+            "author": 3
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 1,
+        "fields": {
+            "content": "Absolutely authentic! Reminds me of my Greek grandmother's recipe.",
+            "author": 1,
+            "recipe": 1,
+            "created_at": "2024-01-28T11:00:00Z",
+            "updated_at": "2024-01-28T11:00:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 2,
+        "fields": {
+            "content": "The béchamel sauce was perfect. Great instructions!",
+            "author": 2,
+            "recipe": 1,
+            "created_at": "2024-01-28T11:01:00Z",
+            "updated_at": "2024-01-28T11:01:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 3,
+        "fields": {
+            "content": "Made this for a dinner party - everyone loved it!",
+            "author": 3,
+            "recipe": 1,
+            "created_at": "2024-01-28T11:02:00Z",
+            "updated_at": "2024-01-28T11:02:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 4,
+        "fields": {
+            "content": "The socarrat at the bottom was perfect!",
+            "author": 1,
+            "recipe": 2,
+            "created_at": "2024-01-28T11:03:00Z",
+            "updated_at": "2024-01-28T11:03:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 5,
+        "fields": {
+            "content": "Best paella recipe I've tried so far.",
+            "author": 2,
+            "recipe": 2,
+            "created_at": "2024-01-28T11:04:00Z",
+            "updated_at": "2024-01-28T11:04:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 6,
+        "fields": {
+            "content": "The saffron really makes a difference.",
+            "author": 3,
+            "recipe": 2,
+            "created_at": "2024-01-28T11:05:00Z",
+            "updated_at": "2024-01-28T11:05:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 7,
+        "fields": {
+            "content": "Creamy and delicious!",
+            "author": 1,
+            "recipe": 3,
+            "created_at": "2024-01-28T11:06:00Z",
+            "updated_at": "2024-01-28T11:06:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 8,
+        "fields": {
+            "content": "Perfect consistency achieved.",
+            "author": 2,
+            "recipe": 3,
+            "created_at": "2024-01-28T11:07:00Z",
+            "updated_at": "2024-01-28T11:07:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 9,
+        "fields": {
+            "content": "Simple yet elegant dish.",
+            "author": 3,
+            "recipe": 3,
+            "created_at": "2024-01-28T11:08:00Z",
+            "updated_at": "2024-01-28T11:08:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 10,
+        "fields": {
+            "content": "The broth is so rich and flavorful!",
+            "author": 1,
+            "recipe": 4,
+            "created_at": "2024-01-28T11:09:00Z",
+            "updated_at": "2024-01-28T11:09:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 11,
+        "fields": {
+            "content": "Takes time but worth the effort.",
+            "author": 2,
+            "recipe": 4,
+            "created_at": "2024-01-28T11:10:00Z",
+            "updated_at": "2024-01-28T11:10:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 12,
+        "fields": {
+            "content": "Better than restaurant ramen!",
+            "author": 3,
+            "recipe": 4,
+            "created_at": "2024-01-28T11:11:00Z",
+            "updated_at": "2024-01-28T11:11:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 13,
+        "fields": {
+            "content": "Perfect balance of spices.",
+            "author": 1,
+            "recipe": 5,
+            "created_at": "2024-01-28T11:12:00Z",
+            "updated_at": "2024-01-28T11:12:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 14,
+        "fields": {
+            "content": "My family's new favorite curry.",
+            "author": 2,
+            "recipe": 5,
+            "created_at": "2024-01-28T11:13:00Z",
+            "updated_at": "2024-01-28T11:13:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 15,
+        "fields": {
+            "content": "Creamy and not too spicy.",
+            "author": 3,
+            "recipe": 5,
+            "created_at": "2024-01-28T11:14:00Z",
+            "updated_at": "2024-01-28T11:14:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 16,
+        "fields": {
+            "content": "So fresh and aromatic!",
+            "author": 1,
+            "recipe": 6,
+            "created_at": "2024-01-28T11:15:00Z",
+            "updated_at": "2024-01-28T11:15:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 17,
+        "fields": {
+            "content": "Love the authentic taste.",
+            "author": 2,
+            "recipe": 6,
+            "created_at": "2024-01-28T11:16:00Z",
+            "updated_at": "2024-01-28T11:16:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 18,
+        "fields": {
+            "content": "Quick and delicious weeknight meal.",
+            "author": 3,
+            "recipe": 6,
+            "created_at": "2024-01-28T11:17:00Z",
+            "updated_at": "2024-01-28T11:17:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 19,
+        "fields": {
+            "content": "Reminds me of Istanbul!",
+            "author": 1,
+            "recipe": 7,
+            "created_at": "2024-01-28T11:18:00Z",
+            "updated_at": "2024-01-28T11:18:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 20,
+        "fields": {
+            "content": "The shape was tricky but came out great.",
+            "author": 2,
+            "recipe": 7,
+            "created_at": "2024-01-28T11:19:00Z",
+            "updated_at": "2024-01-28T11:19:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 21,
+        "fields": {
+            "content": "Great alternative to pizza.",
+            "author": 3,
+            "recipe": 7,
+            "created_at": "2024-01-28T11:20:00Z",
+            "updated_at": "2024-01-28T11:20:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 22,
+        "fields": {
+            "content": "The preserved lemons are key.",
+            "author": 1,
+            "recipe": 8,
+            "created_at": "2024-01-28T11:21:00Z",
+            "updated_at": "2024-01-28T11:21:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 23,
+        "fields": {
+            "content": "Meat was so tender.",
+            "author": 2,
+            "recipe": 8,
+            "created_at": "2024-01-28T11:22:00Z",
+            "updated_at": "2024-01-28T11:22:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 24,
+        "fields": {
+            "content": "Amazing depth of flavor.",
+            "author": 3,
+            "recipe": 8,
+            "created_at": "2024-01-28T11:23:00Z",
+            "updated_at": "2024-01-28T11:23:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 25,
+        "fields": {
+            "content": "The broth is everything!",
+            "author": 1,
+            "recipe": 9,
+            "created_at": "2024-01-28T11:24:00Z",
+            "updated_at": "2024-01-28T11:24:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 26,
+        "fields": {
+            "content": "Worth the long cooking time.",
+            "author": 2,
+            "recipe": 9,
+            "created_at": "2024-01-28T11:25:00Z",
+            "updated_at": "2024-01-28T11:25:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 27,
+        "fields": {
+            "content": "So comforting and delicious.",
+            "author": 3,
+            "recipe": 9,
+            "created_at": "2024-01-28T11:26:00Z",
+            "updated_at": "2024-01-28T11:26:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 28,
+        "fields": {
+            "content": "Complex and delicious sauce.",
+            "author": 1,
+            "recipe": 10,
+            "created_at": "2024-01-28T11:27:00Z",
+            "updated_at": "2024-01-28T11:27:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 29,
+        "fields": {
+            "content": "Love the chocolate addition.",
+            "author": 2,
+            "recipe": 10,
+            "created_at": "2024-01-28T11:28:00Z",
+            "updated_at": "2024-01-28T11:28:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 30,
+        "fields": {
+            "content": "Authentic taste achieved!",
+            "author": 3,
+            "recipe": 10,
+            "created_at": "2024-01-28T11:29:00Z",
+            "updated_at": "2024-01-28T11:29:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 31,
+        "fields": {
+            "content": "Love the variety of vegetables.",
+            "author": 1,
+            "recipe": 11,
+            "created_at": "2024-01-28T11:30:00Z",
+            "updated_at": "2024-01-28T11:30:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 32,
+        "fields": {
+            "content": "The gochujang makes it perfect.",
+            "author": 2,
+            "recipe": 11,
+            "created_at": "2024-01-28T11:31:00Z",
+            "updated_at": "2024-01-28T11:31:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 33,
+        "fields": {
+            "content": "Great healthy meal prep option.",
+            "author": 3,
+            "recipe": 11,
+            "created_at": "2024-01-28T11:32:00Z",
+            "updated_at": "2024-01-28T11:32:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 34,
+        "fields": {
+            "content": "Classic French comfort food.",
+            "author": 1,
+            "recipe": 12,
+            "created_at": "2024-01-28T11:33:00Z",
+            "updated_at": "2024-01-28T11:33:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 35,
+        "fields": {
+            "content": "The sauce was divine.",
+            "author": 2,
+            "recipe": 12,
+            "created_at": "2024-01-28T11:34:00Z",
+            "updated_at": "2024-01-28T11:34:00Z"
+        }
+    },
+    {
+        "model": "recipes.comment",
+        "pk": 36,
+        "fields": {
+            "content": "Perfect for special occasions.",
+            "author": 3,
+            "recipe": 12,
+            "created_at": "2024-01-28T11:35:00Z",
+            "updated_at": "2024-01-28T11:35:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 1,
+        "fields": {
+            "rating": 4,
+            "rating_author": 1,
+            "recipe": 1,
+            "created_at": "2024-01-28T12:00:00Z",
+            "updated_at": "2024-01-28T12:00:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 2,
+        "fields": {
+            "rating": 5,
+            "rating_author": 2,
+            "recipe": 1,
+            "created_at": "2024-01-28T12:01:00Z",
+            "updated_at": "2024-01-28T12:01:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 3,
+        "fields": {
+            "rating": 4,
+            "rating_author": 3,
+            "recipe": 1,
+            "created_at": "2024-01-28T12:02:00Z",
+            "updated_at": "2024-01-28T12:02:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 4,
+        "fields": {
+            "rating": 4,
+            "rating_author": 1,
+            "recipe": 2,
+            "created_at": "2024-01-28T12:03:00Z",
+            "updated_at": "2024-01-28T12:03:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 5,
+        "fields": {
+            "rating": 3,
+            "rating_author": 2,
+            "recipe": 2,
+            "created_at": "2024-01-28T12:04:00Z",
+            "updated_at": "2024-01-28T12:04:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 6,
+        "fields": {
+            "rating": 4,
+            "rating_author": 3,
+            "recipe": 2,
+            "created_at": "2024-01-28T12:05:00Z",
+            "updated_at": "2024-01-28T12:05:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 7,
+        "fields": {
+            "rating": 3,
+            "rating_author": 1,
+            "recipe": 3,
+            "created_at": "2024-01-28T12:06:00Z",
+            "updated_at": "2024-01-28T12:06:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 8,
+        "fields": {
+            "rating": 2,
+            "rating_author": 2,
+            "recipe": 3,
+            "created_at": "2024-01-28T12:07:00Z",
+            "updated_at": "2024-01-28T12:07:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 9,
+        "fields": {
+            "rating": 3,
+            "rating_author": 3,
+            "recipe": 3,
+            "created_at": "2024-01-28T12:08:00Z",
+            "updated_at": "2024-01-28T12:08:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 10,
+        "fields": {
+            "rating": 5,
+            "rating_author": 1,
+            "recipe": 4,
+            "created_at": "2024-01-28T12:09:00Z",
+            "updated_at": "2024-01-28T12:09:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 11,
+        "fields": {
+            "rating": 5,
+            "rating_author": 2,
+            "recipe": 4,
+            "created_at": "2024-01-28T12:10:00Z",
+            "updated_at": "2024-01-28T12:10:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 12,
+        "fields": {
+            "rating": 4,
+            "rating_author": 3,
+            "recipe": 4,
+            "created_at": "2024-01-28T12:11:00Z",
+            "updated_at": "2024-01-28T12:11:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 13,
+        "fields": {
+            "rating": 3,
+            "rating_author": 1,
+            "recipe": 5,
+            "created_at": "2024-01-28T12:12:00Z",
+            "updated_at": "2024-01-28T12:12:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 14,
+        "fields": {
+            "rating": 2,
+            "rating_author": 2,
+            "recipe": 5,
+            "created_at": "2024-01-28T12:13:00Z",
+            "updated_at": "2024-01-28T12:13:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 15,
+        "fields": {
+            "rating": 3,
+            "rating_author": 3,
+            "recipe": 5,
+            "created_at": "2024-01-28T12:14:00Z",
+            "updated_at": "2024-01-28T12:14:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 16,
+        "fields": {
+            "rating": 2,
+            "rating_author": 1,
+            "recipe": 6,
+            "created_at": "2024-01-28T12:15:00Z",
+            "updated_at": "2024-01-28T12:15:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 17,
+        "fields": {
+            "rating": 2,
+            "rating_author": 2,
+            "recipe": 6,
+            "created_at": "2024-01-28T12:16:00Z",
+            "updated_at": "2024-01-28T12:16:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 18,
+        "fields": {
+            "rating": 3,
+            "rating_author": 3,
+            "recipe": 6,
+            "created_at": "2024-01-28T12:17:00Z",
+            "updated_at": "2024-01-28T12:17:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 19,
+        "fields": {
+            "rating": 3,
+            "rating_author": 1,
+            "recipe": 7,
+            "created_at": "2024-01-28T12:18:00Z",
+            "updated_at": "2024-01-28T12:18:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 20,
+        "fields": {
+            "rating": 4,
+            "rating_author": 2,
+            "recipe": 7,
+            "created_at": "2024-01-28T12:19:00Z",
+            "updated_at": "2024-01-28T12:19:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 21,
+        "fields": {
+            "rating": 3,
+            "rating_author": 3,
+            "recipe": 7,
+            "created_at": "2024-01-28T12:20:00Z",
+            "updated_at": "2024-01-28T12:20:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 22,
+        "fields": {
+            "rating": 4,
+            "rating_author": 1,
+            "recipe": 8,
+            "created_at": "2024-01-28T12:21:00Z",
+            "updated_at": "2024-01-28T12:21:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 23,
+        "fields": {
+            "rating": 3,
+            "rating_author": 2,
+            "recipe": 8,
+            "created_at": "2024-01-28T12:22:00Z",
+            "updated_at": "2024-01-28T12:22:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 24,
+        "fields": {
+            "rating": 4,
+            "rating_author": 3,
+            "recipe": 8,
+            "created_at": "2024-01-28T12:23:00Z",
+            "updated_at": "2024-01-28T12:23:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 25,
+        "fields": {
+            "rating": 5,
+            "rating_author": 1,
+            "recipe": 9,
+            "created_at": "2024-01-28T12:24:00Z",
+            "updated_at": "2024-01-28T12:24:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 26,
+        "fields": {
+            "rating": 4,
+            "rating_author": 2,
+            "recipe": 9,
+            "created_at": "2024-01-28T12:25:00Z",
+            "updated_at": "2024-01-28T12:25:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 27,
+        "fields": {
+            "rating": 5,
+            "rating_author": 3,
+            "recipe": 9,
+            "created_at": "2024-01-28T12:26:00Z",
+            "updated_at": "2024-01-28T12:26:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 28,
+        "fields": {
+            "rating": 5,
+            "rating_author": 1,
+            "recipe": 10,
+            "created_at": "2024-01-28T12:27:00Z",
+            "updated_at": "2024-01-28T12:27:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 29,
+        "fields": {
+            "rating": 4,
+            "rating_author": 2,
+            "recipe": 10,
+            "created_at": "2024-01-28T12:28:00Z",
+            "updated_at": "2024-01-28T12:28:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 30,
+        "fields": {
+            "rating": 5,
+            "rating_author": 3,
+            "recipe": 10,
+            "created_at": "2024-01-28T12:29:00Z",
+            "updated_at": "2024-01-28T12:29:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 31,
+        "fields": {
+            "rating": 2,
+            "rating_author": 1,
+            "recipe": 11,
+            "created_at": "2024-01-28T12:30:00Z",
+            "updated_at": "2024-01-28T12:30:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 32,
+        "fields": {
+            "rating": 2,
+            "rating_author": 2,
+            "recipe": 11,
+            "created_at": "2024-01-28T12:31:00Z",
+            "updated_at": "2024-01-28T12:31:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 33,
+        "fields": {
+            "rating": 3,
+            "rating_author": 3,
+            "recipe": 11,
+            "created_at": "2024-01-28T12:32:00Z",
+            "updated_at": "2024-01-28T12:32:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 34,
+        "fields": {
+            "rating": 4,
+            "rating_author": 1,
+            "recipe": 12,
+            "created_at": "2024-01-28T12:33:00Z",
+            "updated_at": "2024-01-28T12:33:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 35,
+        "fields": {
+            "rating": 3,
+            "rating_author": 2,
+            "recipe": 12,
+            "created_at": "2024-01-28T12:34:00Z",
+            "updated_at": "2024-01-28T12:34:00Z"
+        }
+    },
+    {
+        "model": "recipes.difficultyrating",
+        "pk": 36,
+        "fields": {
+            "rating": 4,
+            "rating_author": 3,
+            "recipe": 12,
+            "created_at": "2024-01-28T12:35:00Z",
+            "updated_at": "2024-01-28T12:35:00Z"
+        }
+    }
+]

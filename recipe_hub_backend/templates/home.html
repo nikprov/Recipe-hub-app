@@ -1,0 +1,191 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Hub API - Documentation</title>
+    <style>
+        /* Modern, clean styling */
+        :root {
+            --primary-color: #914F1E;
+            --secondary-color: #DEAC80;
+            --background-color: #F7DCB9;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .endpoints {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .endpoint-group {
+            margin-bottom: 2rem;
+        }
+
+        .endpoint-group h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .endpoint-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .endpoint-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            transition: transform 0.2s;
+        }
+
+        .endpoint-item:hover {
+            transform: translateX(10px);
+            background-color: #f0f0f0;
+        }
+
+        .endpoint-link {
+            display: block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .endpoint-description {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Recipe Hub API</h1>
+        <div class="subtitle">Documentation & resources' shortcuts</div>
+    </header>
+
+    <div class="container">
+        <div class="endpoints">
+            <div class="endpoint-group">
+                <h2>Administration</h2>
+                <ul class="endpoint-list">
+                    <li class="endpoint-item">
+                        <a href="/admin" class="endpoint-link">/admin</a>
+                        <div class="endpoint-description">Django Admin Interface - Manage your application data</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="endpoint-group">
+                <h2>API Endpoints</h2>
+                <ul class="endpoint-list">
+                    <li class="endpoint-item">
+                        <a href="/api" class="endpoint-link">/api</a>
+                        <div class="endpoint-description">API Root - Browse all available endpoints</div>
+                    </li>
+                    <li class="endpoint-item">
+                        <a href="/api-auth/login/" class="endpoint-link">/api-auth/login</a>
+                        <div class="endpoint-description">API Session Authentication login endpoint</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="endpoint-group">
+                <h2>Authentication</h2>
+                <ul class="endpoint-list">
+                    <li class="endpoint-item">
+                        <a href="/api/token/" class="endpoint-link">/api/token/</a>
+                        <div class="endpoint-description">Obtain JWT token pair</div>
+                    </li>
+                    <li class="endpoint-item">
+                        <a href="/api/token/refresh/" class="endpoint-link">/api/token/refresh/</a>
+                        <div class="endpoint-description">Refresh JWT token</div>
+                    </li>
+                    <li class="endpoint-item">
+                        <a href="/api/token/verify/" class="endpoint-link">/api/token/verify/</a>
+                        <div class="endpoint-description">Verify JWT token</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="endpoint-group">
+                <h2>Documentation</h2>
+                <ul class="endpoint-list">
+                    <li class="endpoint-item">
+                        <a href="/api/schema/" class="endpoint-link">/api/schema/</a>
+                        <div class="endpoint-description">OpenAPI Schema</div>
+                    </li>
+                    <li class="endpoint-item">
+                        <a href="/api/docs/" class="endpoint-link">/api/docs/</a>
+                        <div class="endpoint-description">Swagger UI Documentation</div>
+                    </li>
+                    <li class="endpoint-item">
+                        <a href="/api/redoc/" class="endpoint-link">/api/redoc/</a>
+                        <div class="endpoint-description">ReDoc Documentation</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="endpoint-group">
+                <h2>Frontend shortcut</h2>
+                <ul class="endpoint-list">
+                    <li class="endpoint-item">
+                        <a href="http://localhost:5173/" class="endpoint-link">Frontend homepage</a>
+                        <div class="endpoint-description">Default Vite frontend url - http://localhost:5173/ - Requires running npm server</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Recipe Hub API Documentation © 2025</p>
+    </footer>
+</body>
+</html>
