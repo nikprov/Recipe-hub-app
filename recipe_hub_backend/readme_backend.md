@@ -57,131 +57,164 @@ graph TB
 
 ## Technical Requirements
 
-- Python 3.8+
+- Python 3.10+
 - MySQL 8.0+
 - Virtual environment (recommended)
 - Required packages listed in requirements.txt
 
-## Installation
+## Installation Guide
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/nikprov/Recipe-hub-app/tree/main
-   cd recipe-hub-app/recipe_hub_backend
-   ```
+This guide provides two approaches to setting up the Recipe Hub backend: a "Fresh Start" approach and a "Direct Clone" approach. Choose the one that works best for you.
 
-2. Create and activate a virtual environment:
+### Option 1: Fresh Start Approach (Recommended for Beginners)
+
+This approach creates a new Django project from scratch and then integrates our code:
+
+1. Install Python 3.10 or higher from [python.org/downloads/](https://www.python.org/downloads/)
+
+2. Create a new project directory and virtual environment:
    ```bash
+   mkdir recipe_hub_app
+   cd recipe_hub_app
    python -m venv venv
+   
+   # Windows
+   venv\Scripts\activate
+   
+   # macOS/Linux
    source venv/bin/activate
-     # On Windows: venv\Scripts\activate
    ```
 
-3. Install dependencies:
+3. Install Django and create a new project:
+   ```bash
+   pip install django
+   django-admin startproject recipe_hub_backend
+   cd recipe_hub_backend
+   ```
+
+4. Now clone our repository to a temporary location:
+   ```bash
+   git clone https://github.com/nikprov/Recipe-hub-app.git temp_repo
+   ```
+
+5. Copy our application files over your new project:
+   ```bash
+   cp -r temp_repo/recipe_hub_backend/* .
+   rm -rf temp_repo
+   ```
+
+6. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Configure your environment:
-   Create a .env file in the backend directory with these settings:
-   ```ini
-   # Django configuration
-   SECRET_KEY='your-secret-key'
-   DEBUG=True
+### Option 2: Direct Clone Approach
 
-   # Database configuration
-   DB_NAME=recipe_hub_db
-   DB_USER=your_db_user
-   DB_PASSWORD=your_db_password
-   DB_HOST=localhost
-   DB_PORT=3306
+This approach directly clones our repository:
 
-   # JWT configuration
-   JWT_ACCESS_TOKEN_LIFETIME=50  # minutes
-   JWT_REFRESH_TOKEN_LIFETIME=1440  # minutes
+1. Install Python 3.10 or higher
+
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/nikprov/Recipe-hub-app.git
+   cd Recipe-hub-app/recipe_hub_backend
    ```
 
-5. Database Setup Options
-
-   I recommend using a mySQL database but you can use of course the SQLite that comes out-of-the-box with the Django installation. Should you decide the mySQL (or whichever else) first install it in your system and then create the
-   mySQL database within the mySQL Workbench with schema name: `recipe_hub_db`, character set: `utf8mb4` collation: `utf8mb4_0900_ai_ci`.
-
-   ### Option 1: SQLite (Simplest)
-   Django's default SQLite configuration:
-   ```python
-   DATABASES = {
-      'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': BASE_DIR / 'db.sqlite3',
-      }
-   }
-   ```
-
-   ### Option 2: MySQL (Current Configuration)
-   Using environment variables:
-   ```python
-   DATABASES = {
-      'default': {
-         'ENGINE': 'django.db.backends.mysql',
-         'NAME': os.getenv('DB_NAME'),
-         'USER': os.getenv('DB_USER'),
-         'PASSWORD': os.getenv('DB_PASSWORD'),
-         'HOST': os.getenv('DB_HOST'),
-         'PORT': os.getenv('DB_PORT'),
-      }
-   }
-   ```
-
-
-   ## Make and then apply migrations:
-      ```bash
-      python manage.py makemigrations
-         # and then:
-      python manage.py migrate
-      ```
-
-
-   ## Creating Admin and some Test Users
-
-   1. Create admin superuser:
-      ```bash
-      python manage.py createsuperuser
-      ```
-      Use these credentials:
-      - Username: admin
-      - Email: admin@example.com
-      - Password: AdminPass123! (or simpler for quick-testing purposes like 12345 but change it later)
-
-   2. Create test users via either ways:
-      - Through the admin interface at `/admin`
-      - Using Django's shell:
-      ```python
-      python manage.py shell
-      
-      from django.contrib.auth.models import User
-      User.objects.create_user('testuser1', 'test1@example.com', 'TestPass123!')
-      User.objects.create_user('testuser2', 'test2@example.com', 'TestPass123!')
-      ```
-
-
-## Populating with Sample Data
-
-1. The `sample_data.sql` script in the `scripts` directory contains:
-   - 12 recipes (world and Mediterranean cuisine)
-   - Comments from admin, testuser1, and testuser2 on each recipe
-   - Difficulty ratings from each user on each recipe
-
-2. To execute the script:
+3. Create and activate virtual environment:
+   ```bash
+   python -m venv venv
    
-   For SQLite:
-   ```bash
-   sqlite3 db.sqlite3 < scripts/sample_data.sql
+   # Windows
+   venv\Scripts\activate
+   
+   # macOS/Linux
+   source venv/bin/activate
    ```
 
-   For MySQL:
+4. Install dependencies:
    ```bash
-   mysql -u your_user -p recipe_hub_db < scripts/sample_data.sql
+   pip install -r requirements.txt
    ```
+
+### Common Steps for Both Approaches
+
+1. Create your environment file:
+   ```bash
+   cp .env.example .env # For Windows: copy .env.example .env
+   ```
+
+2. OPTIONAL - Only for Direct Clone Approach --> Generate a new secret key:
+   ```bash
+   python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+   ```
+
+3. Update your `.env` file with the new secret key
+
+4. Initialize the database:
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+   In case of using mySQL or other external DB, make sure you have correct credentials for the database user and its permissions on the database in the .env file.
+
+5. Create a superuser:
+   ```bash
+   python manage.py createsuperuser
+   ```
+   This is needed to access the built-in admin interface of django. (at http://localhost:8000/admin - usually: http://127.0.0.1:8000/admin)
+
+## Loading Sample Data
+
+You have three options for loading sample data:
+
+### Option 1: Using Django Management Command (Recommended)
+```bash
+python manage.py populate_sample_data
+```
+
+### Option 2: Using JSON Fixture
+```bash
+python manage.py loaddata sample_data.json
+```
+
+### Option 3: Using SQL Script (MySQL only)
+```bash
+mysql -u your_user -p recipe_hub_db < scripts/sample_data.sql
+```
+
+## Starting the Development Server
+
+```bash
+python manage.py runserver
+```
+
+Visit http://localhost:8000/admin to verify your installation.
+
+## Troubleshooting
+
+### Common Issues:
+
+1. "Django not found" error:
+   - Verify virtual environment is activated
+   - Reinstall requirements:
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+2. Database errors:
+   - For simplicity, start with SQLite (default)
+   - Verify database settings in `.env`
+
+3. Sample data errors:
+   - Use the recommended `populate_sample_data` command
+   - If using MySQL, ensure proper credentials
+
+## Next Steps
+
+1. Try creating a recipe through the admin interface
+2. Test the API endpoints via http://localhost:8000/api/ (see list below)
+ or via the Swagger UI at http://localhost:8000/api/docs/
+3. Set up the frontend (see frontend README)
 
 
 ## API Endpoints
