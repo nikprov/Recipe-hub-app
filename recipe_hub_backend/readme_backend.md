@@ -64,58 +64,12 @@ graph TB
 
 ## Installation Guide
 
-This guide provides two approaches to setting up the Recipe Hub backend: a "Fresh Start" approach and a "Direct Clone" approach. Choose the one that works best for you.
+This guide provides a "direct clone" approach to setting up the Recipe Hub backend
 
-### Option 1: Fresh Start Approach (Recommended for Beginners)
+### Installing python language, environments and necessary dependencies
 
-This approach creates a new Django project from scratch and then integrates our code:
 
 1. Install Python 3.10 or higher from [python.org/downloads/](https://www.python.org/downloads/)
-
-2. Create a new project directory and virtual environment:
-   ```bash
-   mkdir recipe_hub_app
-   cd recipe_hub_app
-   python -m venv venv
-   
-   # Windows
-   venv\Scripts\activate
-   
-   # macOS/Linux
-   source venv/bin/activate
-   ```
-
-3. Install Django and create a new project:
-   ```bash
-   pip install django
-   django-admin startproject recipe_hub_backend
-   cd recipe_hub_backend
-   ```
-
-4. Now clone our repository to a temporary location:
-   ```bash
-   git clone https://github.com/nikprov/Recipe-hub-app.git temp_repo
-   ```
-
-5. Copy or save the `SECRET_KEY='thesecretkey...'` from `recipe_hub_backend/settings.py` 
-   You will need this at the later step of setting the .env file.
-
-6. Copy our application files over your new project. Do it manually or with:
-   ```bash
-   cp -r temp_repo/recipe_hub_backend/* .
-   rm -rf temp_repo
-   ```
-
-7. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-### Option 2: Direct Clone Approach
-
-This approach directly clones our repository:
-
-1. Install Python 3.10 or higher
 
 2. Clone the repository:
    ```bash
@@ -139,19 +93,19 @@ This approach directly clones our repository:
    pip install -r requirements.txt
    ```
 
-### Common Steps for Both Approaches
+### Setting up the cloned django project
 
 1. Create your environment file:
    ```bash
    cp .env.example .env # For Windows: copy .env.example .env
    ```
 
-2. OPTIONAL - Only for Direct Clone Approach --> Generate a new secret key:
+2. Generate a new secret key:
    ```bash
    python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
    ```
 
-3. Update your `.env` file with the new secret key you kept aside from the settings.py (as instructed in the previous guide section).
+3. Update your `.env` file with the new secret key.
 
 4. Choose the database and configure it in settings or/and in .env
 
@@ -208,7 +162,7 @@ DATABASES = {
    ```
    This is needed to access the built-in admin interface of django. (at http://localhost:8000/admin - usually: http://127.0.0.1:8000/admin)
 
-## Loading Sample Data
+## Creating testusers and loading Sample Data
 
 You have three options for loading sample data:
 
@@ -217,13 +171,15 @@ You have three options for loading sample data:
 The sample data script will use the fixtures JSON file containing 12 recipes posted by three users with the following test credentials:
 
 Admin (staff member)
-Username: admin,
+`Username: admin,`
 
-TestUser1 (non staff users):
-Usernames: testuser1, testuser2
+TestUsers (non staff users):
+`Usernames: testuser1, testuser2`
 
-So in order to be parsed successfuly you need to create apart from the staff "admin" user also the other two non-staff users named "testuser1" and "testuser2". Do this manually via the admin django interface (http://localhost:8000/admin). Then run the following command from the root dir (recipe_hub_backend>):
+### IMPORTANT:
+ In order for the script to be parsed successfuly you need to create apart from the staff "admin" user also the other two non-staff users named `"testuser1"` and `"testuser2"`.<br> Do this manually via the admin django interface (http://localhost:8000/admin). Then run the following command from the root dir (recipe_hub_backend>):
 ```bash
+# Ensure you have created two non-staff users named "testuser1" and "testuser2", then run the following:
 python scripts/populate_sample_data.py
 ```
 
@@ -233,9 +189,11 @@ python manage.py loaddata recipe_hub_sample_data.json
 ```
 
 ### Option 3: Using SQL Script (MySQL only)
+Run:
 ```bash
 mysql -u your_user -p recipe_hub_db < scripts/sample_data.sql
 ```
+or paste and run the SQL script in a new SQL window in mySQL Workbench.
 
 ## Starting the Development Server
 
